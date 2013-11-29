@@ -240,6 +240,11 @@ class QuipThreadReplyController extends QuipController {
             $fields[$k] = str_replace(array('[',']'),array('&#91;','&#93;'),$v);
         }
 
+        if(empty($fields[$this->getProperty('postAction','quip-post')]) &&
+            empty($fields[$this->getProperty('previewAction','quip-preview')])) {
+            return;
+        }
+
         $fields['name'] = strip_tags($fields['name']);
         $fields['email'] = strip_tags($fields['email']);
         $fields['website'] = strip_tags($fields['website']);

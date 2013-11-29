@@ -199,7 +199,7 @@ class QuipTest extends QuipTestCase {
      */
     public function providerPreparePaginationIds() {
         return array(
-            array(10),
+            array(10,'quipComment','rank','ASC'),
         );
     }
 
@@ -239,8 +239,8 @@ class QuipTest extends QuipTestCase {
      */
     public function providerGetComments() {
         return array(
-            array(true),
-            array(false,1),
+            array(true,0,'rank','quipComment','ASC'),
+            array(false,1,'rank','quipComment','ASC'),
         );
     }
 
