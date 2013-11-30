@@ -158,7 +158,7 @@ class QuipReplyTest extends QuipTestCase {
         $this->controller->setProperty('recaptcha',$recaptcha);
         $this->controller->setProperty('recaptchaTheme',$recaptchaTheme);
         if ($userHasAuth) {
-            $this->controller->hasAuth = true;
+            $this->controller->modx->user->addSessionContext('web');
         }
 
         $success = $this->controller->loadReCaptcha();
