@@ -1,5 +1,8 @@
 Changelog for Quip.
 
+Quip 2.3.4
+- [#23] Fixes an issue where comments would be empty because of the wrong phptype for the field
+
 Quip 2.3.3
 ======================================
 - [#9323] Better sanitization of POST values in ThreadReply
