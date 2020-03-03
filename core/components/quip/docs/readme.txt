@@ -28,7 +28,7 @@ simply set &useMargins=`1` in your Quip call.
 
 
 Please read the official documentation at:
-http://rtfm.modx.com/display/ADDON/Quip
+https://docs.modx.com/current/en/extras/quip/index
 
 Thanks for using Quip!
 Shaun McCormick
