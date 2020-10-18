@@ -27,7 +27,13 @@
  */
 $xpdo_meta_map['quipComment']= array (
   'package' => 'quip',
+  'version' => '1.1',
   'table' => 'quip_comments',
+  'extends' => 'xPDOSimpleObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'InnoDB',
+  ),
   'fields' => 
   array (
     'thread' => '',
@@ -227,7 +233,7 @@ $xpdo_meta_map['quipComment']= array (
       array (
         'thread' => 
         array (
-          'length' => '',
+          'length' => '191',
           'collation' => 'A',
           'null' => false,
         ),
@@ -346,6 +352,33 @@ $xpdo_meta_map['quipComment']= array (
       ),
     ),
   ),
+  'composites' => 
+  array (
+    'Children' => 
+    array (
+      'class' => 'quipComment',
+      'local' => 'id',
+      'foreign' => 'parent',
+      'cardinality' => 'many',
+      'owner' => 'local',
+    ),
+    'Ancestors' => 
+    array (
+      'class' => 'quipCommentClosure',
+      'local' => 'id',
+      'foreign' => 'ancestor',
+      'cardinality' => 'many',
+      'owner' => 'local',
+    ),
+    'Descendants' => 
+    array (
+      'class' => 'quipCommentClosure',
+      'local' => 'id',
+      'foreign' => 'descendant',
+      'cardinality' => 'many',
+      'owner' => 'local',
+    ),
+  ),
   'aggregates' => 
   array (
     'Thread' => 
@@ -379,33 +412,6 @@ $xpdo_meta_map['quipComment']= array (
       'foreign' => 'id',
       'cardinality' => 'one',
       'owner' => 'foreign',
-    ),
-  ),
-  'composites' => 
-  array (
-    'Children' => 
-    array (
-      'class' => 'quipComment',
-      'local' => 'id',
-      'foreign' => 'parent',
-      'cardinality' => 'many',
-      'owner' => 'local',
-    ),
-    'Ancestors' => 
-    array (
-      'class' => 'quipCommentClosure',
-      'local' => 'id',
-      'foreign' => 'ancestor',
-      'cardinality' => 'many',
-      'owner' => 'local',
-    ),
-    'Descendants' => 
-    array (
-      'class' => 'quipCommentClosure',
-      'local' => 'id',
-      'foreign' => 'descendant',
-      'cardinality' => 'many',
-      'owner' => 'local',
     ),
   ),
 );

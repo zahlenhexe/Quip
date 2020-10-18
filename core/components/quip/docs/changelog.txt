@@ -2,6 +2,7 @@ Changelog for Quip.
 
 Quip 2.3.4
 - [#5] Fixes a bug were replying to some post, displayed post parents did not contained data
+- Fix various database/schema related issues
 
 Quip 2.3.3
 ======================================
