@@ -29,6 +29,7 @@ $xpdo_meta_map['quipCommentClosure']= array (
   'package' => 'quip',
   'version' => '1.1',
   'table' => 'quip_comments_closure',
+  'extends' => 'xPDOObject',
   'fields' => 
   array (
     'ancestor' => 0,

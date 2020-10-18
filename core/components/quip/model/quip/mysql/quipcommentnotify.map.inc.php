@@ -27,12 +27,19 @@
  */
 $xpdo_meta_map['quipCommentNotify']= array (
   'package' => 'quip',
+  'version' => '1.1',
   'table' => 'quip_comment_notify',
+  'extends' => 'xPDOSimpleObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'InnoDB',
+  ),
   'fields' => 
   array (
     'thread' => '',
     'email' => '',
     'createdon' => NULL,
+    'user' => 0,
   ),
   'fieldMeta' => 
   array (
@@ -59,6 +66,16 @@ $xpdo_meta_map['quipCommentNotify']= array (
       'phptype' => 'datetime',
       'null' => true,
     ),
+    'user' => 
+    array (
+      'dbtype' => 'integer',
+      'precision' => '10',
+      'phptype' => 'integer',
+      'attributes' => 'unsigned',
+      'null' => false,
+      'default' => 0,
+      'index' => 'index',
+    ),
   ),
   'indexes' => 
   array (
@@ -71,6 +88,22 @@ $xpdo_meta_map['quipCommentNotify']= array (
       'columns' => 
       array (
         'thread' => 
+        array (
+          'length' => '191',
+          'collation' => 'A',
+          'null' => false,
+        ),
+      ),
+    ),
+    'user' => 
+    array (
+      'alias' => 'user',
+      'primary' => false,
+      'unique' => true,
+      'type' => 'BTREE',
+      'columns' => 
+      array (
+        'user' => 
         array (
           'length' => '',
           'collation' => 'A',

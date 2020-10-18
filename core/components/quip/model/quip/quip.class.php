@@ -111,6 +111,8 @@ class Quip {
             'tplquipComments' => '',
             'tplquipLoginToComment' => '',
             'tplquipReport' => '',
+            
+            'debugUser' => '',
         ),$config);
 
         $this->modx->addPackage('quip',$this->config['modelPath']);
