@@ -1,5 +1,8 @@
 Changelog for Quip.
 
+Quip 2.3.5
+- Fixes a bug where posting a second comment would not work.
+
 Quip 2.3.4
 - [#5] Fixes a bug were replying to some post, displayed post parents did not contained data
 - Fix various database/schema related issues

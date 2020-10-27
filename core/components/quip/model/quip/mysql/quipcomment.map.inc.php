@@ -227,7 +227,7 @@ $xpdo_meta_map['quipComment']= array (
     array (
       'alias' => 'thread',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
@@ -243,7 +243,7 @@ $xpdo_meta_map['quipComment']= array (
     array (
       'alias' => 'parent',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
@@ -259,7 +259,7 @@ $xpdo_meta_map['quipComment']= array (
     array (
       'alias' => 'author',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
@@ -275,7 +275,7 @@ $xpdo_meta_map['quipComment']= array (
     array (
       'alias' => 'approved',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
@@ -291,7 +291,7 @@ $xpdo_meta_map['quipComment']= array (
     array (
       'alias' => 'approvedby',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
@@ -307,7 +307,7 @@ $xpdo_meta_map['quipComment']= array (
     array (
       'alias' => 'deleted',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
@@ -323,7 +323,7 @@ $xpdo_meta_map['quipComment']= array (
     array (
       'alias' => 'deletedby',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
@@ -339,7 +339,7 @@ $xpdo_meta_map['quipComment']= array (
     array (
       'alias' => 'resource',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (

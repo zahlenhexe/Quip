@@ -73,7 +73,7 @@ $xpdo_meta_map['quipThread']= array (
       'attributes' => 'unsigned',
       'null' => false,
       'default' => 1,
-      'index' => 'index',
+      'index' => 'moderated',
     ),
     'moderator_group' => 
     array (
@@ -82,7 +82,7 @@ $xpdo_meta_map['quipThread']= array (
       'phptype' => 'string',
       'null' => false,
       'default' => 'Administrator',
-      'index' => 'index',
+      'index' => 'moderator_group',
     ),
     'moderators' => 
     array (
@@ -155,7 +155,7 @@ $xpdo_meta_map['quipThread']= array (
     array (
       'alias' => 'moderated',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
@@ -171,7 +171,7 @@ $xpdo_meta_map['quipThread']= array (
     array (
       'alias' => 'moderator_group',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
@@ -187,7 +187,7 @@ $xpdo_meta_map['quipThread']= array (
     array (
       'alias' => 'resource',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (

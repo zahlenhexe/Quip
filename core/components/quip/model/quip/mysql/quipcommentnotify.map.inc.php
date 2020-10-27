@@ -83,7 +83,7 @@ $xpdo_meta_map['quipCommentNotify']= array (
     array (
       'alias' => 'thread',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
@@ -99,7 +99,7 @@ $xpdo_meta_map['quipCommentNotify']= array (
     array (
       'alias' => 'user',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
