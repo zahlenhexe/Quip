@@ -6,7 +6,7 @@ Quip.grid.Comments = function(config) {
     Ext.applyIf(config,{
         url: Quip.config.connector_url
         ,baseParams: { 
-            action: 'mgr/comment/getList'
+            action: 'mgr/comment/getlist'
             ,thread: config.thread || null
             ,family: config.family || null
         }
@@ -162,7 +162,7 @@ Ext.extend(Quip.grid.Comments,MODx.grid.Grid,{
         MODx.Ajax.request({
             url: this.config.url
             ,params: {
-                action: 'mgr/comment/approveMultiple'
+                action: 'mgr/comment/approvemultiple'
                 ,comments: cs
             }
             ,listeners: {
@@ -181,7 +181,7 @@ Ext.extend(Quip.grid.Comments,MODx.grid.Grid,{
         MODx.Ajax.request({
             url: this.config.url
             ,params: {
-                action: 'mgr/comment/unapproveMultiple'
+                action: 'mgr/comment/unapprovemultiple'
                 ,comments: cs
             }
             ,listeners: {
@@ -201,7 +201,7 @@ Ext.extend(Quip.grid.Comments,MODx.grid.Grid,{
         MODx.Ajax.request({
             url: this.config.url
             ,params: {
-                action: 'mgr/comment/deleteMultiple'
+                action: 'mgr/comment/deletemultiple'
                 ,comments: cs
             }
             ,listeners: {
@@ -220,7 +220,7 @@ Ext.extend(Quip.grid.Comments,MODx.grid.Grid,{
         MODx.Ajax.request({
             url: this.config.url
             ,params: {
-                action: 'mgr/comment/undeleteMultiple'
+                action: 'mgr/comment/undeletemultiple'
                 ,comments: cs
             }
             ,listeners: {
@@ -240,7 +240,7 @@ Ext.extend(Quip.grid.Comments,MODx.grid.Grid,{
         MODx.Ajax.request({
             url: this.config.url
             ,params: {
-                action: 'mgr/comment/removeMultiple'
+                action: 'mgr/comment/removemultiple'
                 ,comments: cs
             }
             ,listeners: {

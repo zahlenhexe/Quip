@@ -3,6 +3,15 @@
  * @package stopforumspam
  * @subpackage spam
  */
+
+use Exception;
+use SimpleXMLElement;
+use MODX\Revolution\modX;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
+
+
 class StopForumSpam {
 
     function __construct(modX &$modx, array $config = array()) {
@@ -53,29 +62,50 @@ class StopForumSpam {
      * @return mixed The return SimpleXML object, or false if none
      */
     public function request($params = array()) {
-        $loaded = $this->_getClient();
-        if (!$loaded) {
-            $this->modx->log(modX::LOG_LEVEL_ERROR,'[StopForumSpam] Could not load REST client.');
+        $client = $this->modx->services->get(ClientInterface::class);
+        $factory = $this->modx->services->get(RequestFactoryInterface::class);
+
+         $uri = $this->config['host'] . $this->config['path'];
+        if (strtoupper($this->config['method']) == 'GET') {
+            $uri .= (strpos($uri, '?') > 0) ? '&' : '?';
+            $uri .= http_build_query($params);
+        }
+
+        $request = $factory->createRequest($this->config['method'], $uri);
+
+        if (strtoupper($this->config['method']) == 'POST') {
+            $request->getBody()->write(json_encode($params));
+        }
+
+        try {
+            $response = $client->sendRequest($request)->withHeader('Accept', 'text/xml');
+        } catch (ClientExceptionInterface $e) {
+            $this->modx->log(modX::LOG_LEVEL_ERROR, '[StopForumSpam] Could not load response from: ' . $this->config['host']);
+            $this->modx->log(modX::LOG_LEVEL_ERROR, '[StopForumSpam] Error: ' . $e->getMessage());
             return true;
         }
 
-        $response = $this->modx->rest->request($this->config['host'],$this->config['path'],$this->config['method'],$params);
-        $responseXml = $response->toXml();
+        $responseXml = $this->toXml($response->getBody()->getContents());
+
         return $responseXml;
     }
 
     /**
-     * Get the REST Client
+     *  Interprets the response string of XML into an object
      *
-     * @access private
-     * @return modRestClient/boolean
+     * @return SimpleXMLElement
      */
-    private function _getClient() {
-        if (empty($this->modx->rest)) {
-            $this->modx->getService('rest','rest.modRestClient');
-            $loaded = $this->modx->rest->getConnection();
-            if (!$loaded) return false;
+    private function toXml($response) {
+        $xml = null;
+
+        try {
+            $xml = simplexml_load_string($response);
+        } catch (Exception $e) {
+            $this->modx->log(xPDO::LOG_LEVEL_ERROR, 'Could not parse XML response from provider: ' . $response);
         }
-        return $this->modx->rest;
+        if (!$xml) {
+            $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><error><message>' . $this->modx->lexicon('provider_err_blank_response') . '</message></error>');
+        }
+        return $xml;
     }
 }

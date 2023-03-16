@@ -21,9 +21,12 @@
  *
  * @package quip
  */
+
 require_once dirname(dirname(__FILE__)) . '/model/quip/quip.class.php';
 
-class QuipThreadManagerController extends modExtraManagerController {
+//class QuipHomeManagerController extends QuipManagerController {
+
+class QuipIndexManagerController extends modExtraManagerController {
     /** @var Quip $quip */
     public $quip;
     public function initialize() {
@@ -42,15 +45,25 @@ class QuipThreadManagerController extends modExtraManagerController {
         $this->checkForRejection();
         return parent::initialize();
     }
+
+
     public function process(array $scriptProperties = array()) {
-        
+
     }
     public function getLanguageTopics() {
         return array('quip:default');
     }
-    public function checkPermissions() { return true;}
+    public function getPageTitle() { return $this->modx->lexicon('quip'); }
+     public function checkPermissions() { return true;}
 
-    public function checkForApproval() {
+
+    public function loadCustomCssJs() {
+        $this->addJavascript($this->quip->config['jsUrl'].'widgets/comments.grid.js');
+        $this->addJavascript($this->quip->config['jsUrl'].'widgets/threads.panel.js');
+        $this->addLastJavascript($this->quip->config['jsUrl'].'sections/home.js');
+    }
+    public function getTemplateFile() { return $this->quip->config['templatesPath'].'home.tpl'; }
+        public function checkForApproval() {
         if (!empty($_REQUEST['quip_approve'])) {
             /** @var quipComment $comment */
             $comment = $this->modx->getObject('quipComment',$_REQUEST['quip_approve']);
@@ -88,12 +101,5 @@ class QuipThreadManagerController extends modExtraManagerController {
             }
         }
     }
-    public function getPageTitle() { return $this->modx->lexicon('quip'); }
-    public function loadCustomCssJs() {
-        $this->addJavascript($this->quip->config['jsUrl'].'widgets/comments.grid.js');
-        $this->addJavascript($this->quip->config['jsUrl'].'widgets/notifications.grid.js');
-        $this->addJavascript($this->quip->config['jsUrl'].'widgets/thread.panel.js');
-        $this->addLastJavascript($this->quip->config['jsUrl'].'sections/thread.js');
-    }
-    public function getTemplateFile() { return $this->quip->config['templatesPath'].'thread.tpl'; }
 }
+

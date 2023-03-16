@@ -23,7 +23,7 @@ Quip.page.Thread = function(config) {
             text: _('quip.back_to_threads')
             ,id: 'quip-btn-back'
             ,handler: function() {
-                location.href = '?a='+MODx.request.a+'&action=home';
+                MODx.loadPage('home', 'namespace=quip');
             }
             ,scope: this
         }]

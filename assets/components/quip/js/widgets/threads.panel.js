@@ -42,7 +42,7 @@ Quip.panel.Threads = function(config) {
                     ,cls: 'main-wrapper'
                     ,preventRender: true
                     ,baseParams: {
-                        action: 'mgr/comment/getUnapproved'
+                        action: 'mgr/comment/getunapproved'
                     }
                 }]
             },{
@@ -71,7 +71,7 @@ Quip.grid.Thread = function(config) {
     this.ident = config.ident || Ext.id();
     Ext.applyIf(config,{
         url: Quip.config.connector_url
-        ,baseParams: { action: 'mgr/thread/getList' }
+        ,baseParams: { action: 'mgr/thread/getlist' }
         ,fields: ['name','comments','unapproved_comments','pagetitle','url','perm']
         ,paging: true
         ,autosave: false
@@ -188,7 +188,7 @@ Ext.extend(Quip.grid.Thread,MODx.grid.Grid,{
         return cs;
     }
     ,manageThread: function() {
-        location.href = '?a='+MODx.request.a+'&action=thread&thread='+this.menu.record.name;
+        MODx.loadPage('thread', 'namespace=quip');
     }
     ,truncateThread: function() {        
         MODx.msg.confirm({
@@ -213,7 +213,7 @@ Ext.extend(Quip.grid.Thread,MODx.grid.Grid,{
             ,text: _('quip.thread_truncate_selected_confirm')
             ,url: this.config.url
             ,params: {
-                action: 'mgr/thread/truncateMultiple'
+                action: 'mgr/thread/truncatemultiple'
                 ,threads: cs
             }
             ,listeners: {
@@ -248,7 +248,7 @@ Ext.extend(Quip.grid.Thread,MODx.grid.Grid,{
             ,text: _('quip.thread_remove_selected_confirm')
             ,url: this.config.url
             ,params: {
-                action: 'mgr/thread/removeMultiple'
+                action: 'mgr/thread/removemultiple'
                 ,threads: cs
             }
             ,listeners: {

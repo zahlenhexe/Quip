@@ -114,7 +114,7 @@ Ext.extend(Quip.grid.Notification,MODx.grid.Grid,{
         MODx.Ajax.request({
             url: this.config.url
             ,params: {
-                action: 'mgr/thread/notification/removeMultiple'
+                action: 'mgr/thread/notification/removemultiple'
                 ,notifications: cs
             }
             ,listeners: {
